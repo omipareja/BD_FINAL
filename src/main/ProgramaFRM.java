@@ -1,14 +1,17 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * and open the template in the editor..
  */
 package main;
 
 import classDAO.concesionarioDAO;
 import classDAO.marcaDAO;
+import classDAO.modeloDAO;
 import classVO.concesionarioVO;
 import classVO.marcaVO;
+import classVO.modeloVO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,7 +23,14 @@ public class ProgramaFRM extends javax.swing.JFrame {
      * Creates new form ProgramaFRM
      */
     public ProgramaFRM() {
+        
         initComponents();
+        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        setTitle("TRANSITO");
+        setIconImage(new ImageIcon(getClass().getResource("/Iconcos/icon.png")).getImage());
+        
+         cargamodelos(0);
    
        
     }
@@ -35,6 +45,7 @@ public class ProgramaFRM extends javax.swing.JFrame {
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
+        jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -50,11 +61,11 @@ public class ProgramaFRM extends javax.swing.JFrame {
         limpiar_marca = new javax.swing.JButton();
         estado = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         id_marca = new javax.swing.JLabel();
         marcasss = new javax.swing.JLabel();
-        fiel = new javax.swing.JLabel();
         IDM = new javax.swing.JTextField();
         marcaM = new javax.swing.JTextField();
         LimpiarM = new javax.swing.JButton();
@@ -64,11 +75,39 @@ public class ProgramaFRM extends javax.swing.JFrame {
         registrarM = new javax.swing.JButton();
         estadoM = new javax.swing.JTextField();
         concesionarioM = new javax.swing.JTextField();
-        Lista_concesionario = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        IDC = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        IDMC = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        caballos = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        registrarC = new javax.swing.JButton();
+        ActualizarC = new javax.swing.JButton();
+        BuscarC = new javax.swing.JButton();
+        EliminarC = new javax.swing.JButton();
+        LimpiarC = new javax.swing.JButton();
+        EstadoC = new javax.swing.JTextField();
+        Lista_marcas = new javax.swing.JComboBox();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        text_modelo = new javax.swing.JTextField();
 
         jToggleButton1.setText("jToggleButton1");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,46 +164,62 @@ public class ProgramaFRM extends javax.swing.JFrame {
             }
         });
 
+        estado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estadoActionPerformed(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel1.setText("Informacion Concesionario");
+
+        jButton3.setText("Mostrar Registros");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(estado, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(185, 185, 185))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(estado)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(registrar_marca)
-                        .addGap(44, 44, 44)
-                        .addComponent(actualizar_provedor)
-                        .addGap(50, 50, 50)
-                        .addComponent(buscar_marca, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(eliminar_concesionario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
-                        .addComponent(limpiar_marca))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ID)
-                            .addComponent(direccion)
-                            .addComponent(Nombre))))
+                            .addComponent(jLabel5)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(registrar_marca)))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(actualizar_provedor)
+                        .addGap(98, 98, 98)
+                        .addComponent(buscar_marca, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                        .addComponent(eliminar_concesionario)
+                        .addGap(74, 74, 74)
+                        .addComponent(limpiar_marca)
+                        .addGap(19, 19, 19))
+                    .addComponent(ID, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(direccion, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Nombre, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(25, 25, 25))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(185, 185, 185))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(27, 27, 27))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,15 +238,17 @@ public class ProgramaFRM extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registrar_marca)
                     .addComponent(actualizar_provedor)
                     .addComponent(buscar_marca)
                     .addComponent(eliminar_concesionario)
                     .addComponent(limpiar_marca))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
                 .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jButton3)
                 .addGap(24, 24, 24))
         );
 
@@ -203,8 +260,6 @@ public class ProgramaFRM extends javax.swing.JFrame {
         id_marca.setText("ID");
 
         marcasss.setText("Marca");
-
-        fiel.setText(" Concesionario");
 
         IDM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,67 +314,58 @@ public class ProgramaFRM extends javax.swing.JFrame {
             }
         });
 
-        Lista_concesionario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Lista_concesionarioActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("ID concesionario");
 
-        jLabel7.setText("(opcioal)");
+        jButton4.setText("consultas");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(marcasss)
-                            .addComponent(id_marca)
-                            .addComponent(registrarM))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(IDM))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(actualizarM)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                                .addComponent(BuscarM)
-                                .addGap(63, 63, 63)
-                                .addComponent(EliminarM)
-                                .addGap(97, 97, 97)
-                                .addComponent(LimpiarM)
-                                .addGap(37, 37, 37))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addGap(7, 7, 7))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(25, 25, 25)
-                                        .addComponent(fiel))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(46, 46, 46)
-                                        .addComponent(jLabel7)))
-                                .addGap(19, 19, 19)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(162, 162, 162)
-                                .addComponent(jLabel2)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(marcaM, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Lista_concesionario, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(concesionarioM, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(estadoM, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(marcasss)
+                    .addComponent(id_marca))
+                .addGap(53, 53, 53)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(IDM, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(marcaM))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(registrarM)
+                .addGap(79, 79, 79)
+                .addComponent(actualizarM)
+                .addGap(119, 119, 119)
+                .addComponent(BuscarM)
+                .addGap(80, 80, 80)
+                .addComponent(EliminarM)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addComponent(LimpiarM)
+                .addGap(48, 48, 48))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(estadoM)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(concesionarioM)))
+                .addGap(16, 16, 16))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,46 +376,198 @@ public class ProgramaFRM extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id_marca)
                     .addComponent(IDM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(marcasss)
                     .addComponent(marcaM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Lista_concesionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fiel))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(concesionarioM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(concesionarioM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registrarM)
                     .addComponent(actualizarM)
-                    .addComponent(EliminarM)
                     .addComponent(BuscarM)
+                    .addComponent(EliminarM)
                     .addComponent(LimpiarM))
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addComponent(estadoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGap(27, 27, 27)
+                .addComponent(jButton4)
+                .addGap(23, 23, 23))
         );
 
         jTabbedPane1.addTab("Marca", jPanel1);
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel7.setText("Informacion Modelo");
+
+        jLabel8.setText("ID");
+
+        IDMC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDMCActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("ID Marca");
+
+        caballos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caballosActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("caballos de fuerza");
+
+        registrarC.setText("Registrar");
+        registrarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarCActionPerformed(evt);
+            }
+        });
+
+        ActualizarC.setText("Actualizar");
+        ActualizarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarCActionPerformed(evt);
+            }
+        });
+
+        BuscarC.setText("Buscar");
+        BuscarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarCActionPerformed(evt);
+            }
+        });
+
+        EliminarC.setText("Eliminar");
+        EliminarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarCActionPerformed(evt);
+            }
+        });
+
+        LimpiarC.setText("Limpiar");
+        LimpiarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimpiarCActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Refrescar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Mostrar Registros");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Modelo");
+
+        javax.swing.GroupLayout IDCLayout = new javax.swing.GroupLayout(IDC);
+        IDC.setLayout(IDCLayout);
+        IDCLayout.setHorizontalGroup(
+            IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(IDCLayout.createSequentialGroup()
+                .addGroup(IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1)
+                        .addComponent(EstadoC, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, IDCLayout.createSequentialGroup()
+                                .addGap(290, 290, 290)
+                                .addComponent(jLabel7))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, IDCLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(registrarC)
+                                .addGap(58, 58, 58)
+                                .addComponent(ActualizarC)
+                                .addGap(85, 85, 85)
+                                .addComponent(BuscarC)
+                                .addGap(95, 95, 95)
+                                .addComponent(EliminarC)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                                .addComponent(LimpiarC))
+                            .addGroup(IDCLayout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(jLabel8)
+                                .addGap(64, 64, 64)
+                                .addComponent(IDMC))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, IDCLayout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(jLabel9)
+                                .addGap(28, 28, 28)
+                                .addComponent(Lista_marcas, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2))))
+                    .addGroup(IDCLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10))
+                        .addGap(18, 18, 18)
+                        .addGroup(IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(caballos, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
+                            .addComponent(text_modelo))))
+                .addContainerGap(82, Short.MAX_VALUE))
+        );
+        IDCLayout.setVerticalGroup(
+            IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(IDCLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel7)
+                .addGap(36, 36, 36)
+                .addGroup(IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(IDCLayout.createSequentialGroup()
+                        .addGroup(IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(IDMC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Lista_marcas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2)))
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addGroup(IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10)
+                    .addComponent(caballos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(text_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(82, 82, 82)
+                .addGroup(IDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(registrarC)
+                    .addComponent(ActualizarC)
+                    .addComponent(BuscarC)
+                    .addComponent(EliminarC)
+                    .addComponent(LimpiarC))
+                .addGap(37, 37, 37)
+                .addComponent(EstadoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(41, 41, 41))
+        );
+
+        jTabbedPane1.addTab("Modelo", IDC);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1)
                 .addContainerGap())
@@ -378,167 +576,263 @@ public class ProgramaFRM extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_IDActionPerformed
 
-    private void registrar_marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_marcaActionPerformed
-      concesionarioVO concesionario = new concesionarioVO();
-      concesionario.setId_concesionario(Integer.parseInt(ID.getText()));
-      concesionario.setDireccion_concesionario(direccion.getText());
-      concesionario.setNombre_concesionario((Nombre.getText()));
- 
-      
-      String resp= concesionarioDAO.registrarconcesionarios(concesionario);
-      estado.setText(resp);
-      ID.setText("");
-      direccion.setText("");
-      Nombre.setText("");
-     
-      //cargar concesionarios
-      
-      
-      
-      
-      
-        
-        
-    }//GEN-LAST:event_registrar_marcaActionPerformed
-
-    private void eliminar_concesionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_concesionarioActionPerformed
         // TODO add your handling code here:
-        
-        String resp = concesionarioDAO.eliminarconcesionarios(ID.getText());
-        estado.setText(resp);
-        ID.setText("");
-        direccion.setText("");
-        Nombre.setText("");
-        
-    }//GEN-LAST:event_eliminar_concesionarioActionPerformed
+        //IDMC.setText("");
+        //caballos.setText("");
+        cargamodelos(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void actualizar_provedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_provedorActionPerformed
-      concesionarioVO concesionario = new concesionarioVO();
-      
-      concesionario.setId_concesionario(Integer.parseInt(ID.getText()));
-      concesionario.setDireccion_concesionario(direccion.getText());
-      concesionario.setNombre_concesionario((Nombre.getText()));
- 
-      
-      String resp= concesionarioDAO.actualizarconcesionarios(concesionario);
-      estado.setText(resp);
-      ID.setText("");
-      direccion.setText("");
-      Nombre.setText("");
-     
-      //cargar concesionarios
-    }//GEN-LAST:event_actualizar_provedorActionPerformed
+    private void LimpiarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarCActionPerformed
 
-    private void buscar_marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_marcaActionPerformed
         // TODO add your handling code here:
-        
-        concesionarioVO concesionario  =concesionarioDAO.buscarconcesionarios(ID.getText());
-        ID.setText(concesionario.getId_concesionario()+"");
-        Nombre.setText(concesionario.getNombre_concesionario());
-        direccion.setText(concesionario.getDireccion_concesionario());
-        estado.setText(concesionario.getResultado());
-        
-        
-    }//GEN-LAST:event_buscar_marcaActionPerformed
+        IDMC.setText("");
+        caballos.setText("");
+        text_modelo.setText("");
+        cargamodelos(0);
+    }//GEN-LAST:event_LimpiarCActionPerformed
+
+    private void EliminarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarCActionPerformed
+        // TODO add your handling code here:
+        String resp= modeloDAO.eliminarmodelos(IDMC.getText());
+        IDMC.setText("");
+        caballos.setText("");
+        text_modelo.setText("");
+        EstadoC.setText(resp);
+        cargamodelos(0);
+    }//GEN-LAST:event_EliminarCActionPerformed
+
+    private void BuscarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarCActionPerformed
+        // TODO add your handling code here:
+
+        modeloVO modelo  = modeloDAO.buscarmodelos(IDMC.getText());
+        IDMC.setText(modelo.getId_modelo()+"");
+        caballos.setText(modelo.getCaballos_fuerza());
+        EstadoC.setText(modelo.getResultado());
+        text_modelo.setText(modelo.getNombre_modelo());
+        cargamodelos(modelo.getId_marca());// para el combo box
+    }//GEN-LAST:event_BuscarCActionPerformed
+
+    private void ActualizarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarCActionPerformed
+        // TODO add your handling code here:
+        marcaVO mar = (marcaVO)   Lista_marcas.getSelectedItem();
+        modeloVO modelo = new modeloVO();
+        Integer mar_M = mar.getId_marca();
+        modelo.setId_modelo(Integer.parseInt(IDMC.getText()));
+        modelo.setCaballos_fuerza(caballos.getText());
+        modelo.setNombre_modelo(text_modelo.getText());
+        // marca.setId_concesionario(Integer.parseInt(concesionarioM.getText()));
+        modelo.setId_marca(mar_M);
+        //marca.setId_concesionario(conce_M); // para el combo box
+        String resp = modeloDAO.actualizarmodelos(modelo);
+        IDMC.setText("");
+        caballos.setText("");
+        concesionarioM.setText("");
+        text_modelo.setText("");
+        EstadoC.setText(resp);
+        cargamodelos(0); //para el combo box
+    }//GEN-LAST:event_ActualizarCActionPerformed
+
+    private void registrarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarCActionPerformed
+
+        marcaVO mar = (marcaVO)   Lista_marcas.getSelectedItem();
+        modeloVO modelo = new modeloVO();
+        Integer mar_M=mar.getId_marca();
+        modelo.setId_modelo(Integer.parseInt(IDMC.getText()));
+        modelo.setCaballos_fuerza(caballos.getText());
+        modelo.setNombre_modelo(text_modelo.getText());
+        // modelo.setId_marca(Integer.parseInt(prueba.getText())); //sin el combo box
+        modelo.setId_marca(mar_M);//para el combo box
+
+        String resp= modeloDAO.registrarmodelos(modelo);
+        EstadoC.setText(resp);
+        IDMC.setText("");
+        caballos.setText("");
+        text_modelo.setText("");
+        //prueba.setText("");
+
+        cargamodelos(0);// para el combo box
+    }//GEN-LAST:event_registrarCActionPerformed
+
+    private void caballosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caballosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_caballosActionPerformed
+
+    private void IDMCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDMCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDMCActionPerformed
+
+    private void concesionarioMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_concesionarioMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_concesionarioMActionPerformed
+
+    private void estadoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_estadoMActionPerformed
+
+    private void registrarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarMActionPerformed
+
+        //  concesionarioVO conce = (concesionarioVO)   Lista_concesionario.getSelectedItem();
+        marcaVO marca = new marcaVO();
+        //Integer conce_M=conce.getId_concesionario();
+        marca.setId_marca(Integer.parseInt(IDM.getText()));
+        marca.setNombre_marca(marcaM.getText());
+        marca.setId_concesionario(Integer.parseInt(concesionarioM.getText())); //sin el combo box
+        // marca.setId_concesionario(conce_M);//para el combo box
+        cargamodelos(0);// para el combo box
+
+        String resp= marcaDAO.registrarmarcas(marca);
+        estadoM.setText(resp);
+        IDM.setText("");
+        marcaM.setText("");
+        concesionarioM.setText("");
+    }//GEN-LAST:event_registrarMActionPerformed
+
+    private void actualizarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarMActionPerformed
+        // TODO add your handling code here:
+        // concesionarioVO conce = (concesionarioVO)   Lista_concesionario.getSelectedItem();
+        marcaVO marca = new marcaVO();
+        //  Integer conce_M = conce.getId_concesionario();
+        marca.setId_marca(Integer.parseInt(IDM.getText()));
+        marca.setNombre_marca(marcaM.getText());
+        marca.setId_concesionario(Integer.parseInt(concesionarioM.getText()));
+
+        //marca.setId_concesionario(conce_M); // para el combo box
+        String resp = marcaDAO.actualizarmarcas(marca);
+        IDM.setText("");
+        marcaM.setText("");
+        concesionarioM.setText("");
+        estadoM.setText(resp);
+        cargamodelos(0); //para el combo box
+    }//GEN-LAST:event_actualizarMActionPerformed
+
+    private void BuscarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarMActionPerformed
+        // TODO add your handling code here:
+
+        marcaVO marca  = marcaDAO.buscarmarcas(IDM.getText());
+        IDM.setText(marca.getId_marca()+"");
+        marcaM.setText(marca.getNombre_marca());
+        concesionarioM.setText(marca.getId_concesionario()+"");
+        estado.setText(marca.getResultado());
+        //  cargaconcesionarios(marca.getId_concesionario());// para el combo box
+    }//GEN-LAST:event_BuscarMActionPerformed
+
+    private void EliminarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarMActionPerformed
+        String resp = marcaDAO.eliminarmarcas(IDM.getText());
+        estadoM.setText(resp);
+        IDM.setText("");
+        marcaM.setText("");
+        concesionarioM.setText("");// sin combo box
+        cargamodelos(0);
+    }//GEN-LAST:event_EliminarMActionPerformed
+
+    private void LimpiarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarMActionPerformed
+        // TODO add your handling code here:
+        estadoM.setText("");
+        IDM.setText("");
+        marcaM.setText("");
+        concesionarioM.setText("");
+        // cargaconcesionarios(0);
+    }//GEN-LAST:event_LimpiarMActionPerformed
+
+    private void IDMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDMActionPerformed
 
     private void limpiar_marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiar_marcaActionPerformed
         // TODO add your handling code here:
         ID.setText("");
         direccion.setText("");
         Nombre.setText("");
-     
     }//GEN-LAST:event_limpiar_marcaActionPerformed
 
-    private void IDMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDMActionPerformed
+    private void eliminar_concesionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_concesionarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_IDMActionPerformed
 
-    private void registrarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarMActionPerformed
-     
-      marcaVO marca = new marcaVO();
-      marca.setId_marca(Integer.parseInt(IDM.getText())); 
-      marca.setNombre_marca(marcaM.getText());
-      marca.setId_concesionario(Integer.parseInt(concesionarioM.getText()));
- 
-      
-      String resp= marcaDAO.registrarmarcas(marca);
-      estadoM.setText(resp);
-      IDM.setText("");
-      marcaM.setText("");
-      concesionarioM.setText("");
-        
-    }//GEN-LAST:event_registrarMActionPerformed
+        String resp = concesionarioDAO.eliminarconcesionarios(ID.getText());
+        estado.setText(resp);
+        ID.setText("");
+        direccion.setText("");
+        Nombre.setText("");
+        //   cargaconcesionarios(0);
+    }//GEN-LAST:event_eliminar_concesionarioActionPerformed
+
+    private void buscar_marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_marcaActionPerformed
+        // TODO add your handling code here:
+
+        concesionarioVO concesionario  =concesionarioDAO.buscarconcesionarios(ID.getText());
+        ID.setText(concesionario.getId_concesionario()+"");
+        Nombre.setText(concesionario.getNombre_concesionario());
+        direccion.setText(concesionario.getDireccion_concesionario());
+        estado.setText(concesionario.getResultado());
+    }//GEN-LAST:event_buscar_marcaActionPerformed
+
+    private void actualizar_provedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_provedorActionPerformed
+        concesionarioVO concesionario = new concesionarioVO();
+
+        concesionario.setId_concesionario(Integer.parseInt(ID.getText()));
+        concesionario.setDireccion_concesionario(direccion.getText());
+        concesionario.setNombre_concesionario((Nombre.getText()));
+
+        String resp= concesionarioDAO.actualizarconcesionarios(concesionario);
+        estado.setText(resp);
+        ID.setText("");
+        direccion.setText("");
+        Nombre.setText("");
+
+        //// cargaconcesionarios(0);
+    }//GEN-LAST:event_actualizar_provedorActionPerformed
+
+    private void registrar_marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_marcaActionPerformed
+        concesionarioVO concesionario = new concesionarioVO();
+        concesionario.setId_concesionario(Integer.parseInt(ID.getText()));
+        concesionario.setDireccion_concesionario(direccion.getText());
+        concesionario.setNombre_concesionario((Nombre.getText()));
+
+        String resp= concesionarioDAO.registrarconcesionarios(concesionario);
+        estado.setText(resp);
+        ID.setText("");
+        direccion.setText("");
+        Nombre.setText("");
+
+        //  cargaconcesionarios(0);
+    }//GEN-LAST:event_registrar_marcaActionPerformed
 
     private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NombreActionPerformed
 
-    private void actualizarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarMActionPerformed
+    private void IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDActionPerformed
         // TODO add your handling code here:
-        
-             marcaVO marca = new marcaVO();
-      
-      marca.setId_marca(Integer.parseInt(IDM.getText()));
-      marca.setNombre_marca(marcaM.getText());
-       marca.setId_concesionario(Integer.parseInt(concesionarioM.getText()));
- 
-      
-      String resp= marcaDAO.actualizarmarcas(marca);
-      estado.setText(resp);
-      IDM.setText("");
-      concesionarioM.setText("");
-      marcaM.setText("");
-     
-   
-    }//GEN-LAST:event_actualizarMActionPerformed
+    }//GEN-LAST:event_IDActionPerformed
 
-    private void BuscarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarMActionPerformed
+    private void estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoActionPerformed
         // TODO add your handling code here:
-        
-         marcaVO marca  = marcaDAO.buscarmarcas(IDM.getText());
-        IDM.setText(marca.getId_marca()+"");
-        marcaM.setText(marca.getNombre_marca());
-        concesionarioM.setText(marca.getId_concesionario()+"");
-        estado.setText(marca.getResultado());
-        
-        
-        
-    }//GEN-LAST:event_BuscarMActionPerformed
+    }//GEN-LAST:event_estadoActionPerformed
 
-    private void EliminarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarMActionPerformed
-String resp = marcaDAO.eliminarmarcas(IDM.getText());
-        estadoM.setText(resp);
-        IDM.setText("");
-        marcaM.setText("");
-       concesionarioM.setText("");
-         
-       
-         
-       
-  
-        
-    }//GEN-LAST:event_EliminarMActionPerformed
-
-    private void LimpiarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarMActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-     
-    }//GEN-LAST:event_LimpiarMActionPerformed
+       Tabla_concesionario abrir = new Tabla_concesionario();
+       abrir.setVisible(true);
+    
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void estadoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoMActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_estadoMActionPerformed
+         Consultas abrirM = new Consultas();
+           abrirM.setVisible(true);
+    
+    }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void concesionarioMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_concesionarioMActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_concesionarioMActionPerformed
-
-    private void Lista_concesionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Lista_concesionarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Lista_concesionarioActionPerformed
+        ConsultasModelo abrirMM = new  ConsultasModelo();
+           abrirMM.setVisible(true);
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -575,54 +869,72 @@ String resp = marcaDAO.eliminarmarcas(IDM.getText());
 
         });  
     }
-/*
-    public  void cargaconcesionarios(int busca){
+
+    public  void cargamodelos(int busca){
         int index = 1;
-        Lista_concesionarios.removeAll();
-        Lista_concesionarios.addItem("seleciona un concesionario");
-        for(concesionarioVO conce: concesionarioDAO.getListconcesionario()){
-            Lista_concesionarios.addItem(conce);
-            if(conce.getId_concesionario() == busca){
-              Lista_concesionarios.setSelectedIndex(index);
+        Lista_marcas.removeAllItems();
+        Lista_marcas.addItem("seleciona una marca");
+        for(marcaVO marr: marcaDAO.getListmarca()){
+            Lista_marcas.addItem(marr);
+            if(marr.getId_marca() == busca){
+              Lista_marcas.setSelectedIndex(index);
             }
             index++;
         }
         
     }
-    */
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ActualizarC;
+    private javax.swing.JButton BuscarC;
     private javax.swing.JButton BuscarM;
+    private javax.swing.JButton EliminarC;
     private javax.swing.JButton EliminarM;
+    private javax.swing.JTextField EstadoC;
     private javax.swing.JTextField ID;
+    private javax.swing.JPanel IDC;
     private javax.swing.JTextField IDM;
+    private javax.swing.JTextField IDMC;
+    private javax.swing.JButton LimpiarC;
     private javax.swing.JButton LimpiarM;
-    private javax.swing.JComboBox Lista_concesionario;
+    private javax.swing.JComboBox Lista_marcas;
     private javax.swing.JTextField Nombre;
     private javax.swing.JButton actualizarM;
     private javax.swing.JButton actualizar_provedor;
     private javax.swing.JButton buscar_marca;
+    private javax.swing.JTextField caballos;
     private javax.swing.JTextField concesionarioM;
     private javax.swing.JTextField direccion;
     private javax.swing.JButton eliminar_concesionario;
     private javax.swing.JTextField estado;
     private javax.swing.JTextField estadoM;
-    private javax.swing.JLabel fiel;
     private javax.swing.JLabel id_marca;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton limpiar_marca;
     private javax.swing.JTextField marcaM;
     private javax.swing.JLabel marcasss;
+    private javax.swing.JButton registrarC;
     private javax.swing.JButton registrarM;
     private javax.swing.JButton registrar_marca;
+    private javax.swing.JTextField text_modelo;
     // End of variables declaration//GEN-END:variables
 }
